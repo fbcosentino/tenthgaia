@@ -8,7 +8,7 @@ Games and other 3D applications often use or take place in our real world (from 
 
 This project consists of both a tool to generate terrains in a variety of possible sizes and resolutions, and a set of pre-generated 3D meshes in .glb format ready for use in any 3D game engine. (The tool is already available from day one, and the pre-generated meshes will be added to the repository over time.)
 
-(The name "Tenth Gaia" is a homage to the TV show _Log Horizon_, in which the game uses a project called "Half Gaia" which is Earth at half size.)
+(The name "Tenth Gaia" is a homage to the TV show _Log Horizon_, featuring a game using a project called "Half Gaia", which is Earth at half size.)
 
 
 ![](docs/cliffs_of_moher.png)
@@ -36,6 +36,10 @@ When slicing in a 4x4 grid, each chunk will be around 28 km (17 miles) in real w
 
 Only parts of the world between latitudes -60 and +60 are available. You can check the available tiles and their sizes [here](https://dwtkns.com/srtm30m/).
 
+World coverage: 
+
+![](docs/coverage.png)
+
 ## Mesh Resolution
 
 Four resolutions are available:
@@ -54,7 +58,7 @@ Chunk sizes and mesh resolutions can be combined to generate the same place and 
 
 As you change the options, the tool will tell you in the interface the resolution in metres since this value changes depending on latitude (it will tell you the WE axis).
 
-The worst and best cases are:
+The coarse and fine extremes are:
 
 * Full tile in 64x64 mesh on the equator (lat 0): one vertex every 174 game units, corresponding to 1.7km in real world, regardless of axis
 * Slice of 10x10 in 512x512 mesh on lat 59: on WE axis, one vertex every 1.1 game units, corresponding to 11 metres in real world (2.2 game units and 22 metres for SN axis)
@@ -63,9 +67,9 @@ The worst and best cases are:
 
 The repository doesn't include NASA's SRTM database, so you download it separately for the tiles you want.
 
-First, make sure you have an account at [EarthData](https://urs.earthdata.nasa.gov/). Then use [EarthData's interactive search tool](https://search.earthdata.nasa.gov/search/granules?p=C2763266360-LPCLOUD&pg[0][v]=f&pg[0][gsk]=-start_date&q=C2763266360-LPCLOUD) to download the tiles.
+First, make sure you have a (free) account at NASA's [EarthData](https://urs.earthdata.nasa.gov/) (it takes only a few seconds to make one). Then use [EarthData's interactive search tool](https://search.earthdata.nasa.gov/search/granules?p=C2763266360-LPCLOUD&pg[0][v]=f&pg[0][gsk]=-start_date&q=C2763266360-LPCLOUD) to download the tiles.
 
-In the search tool, use the tools on the right (square, poligon, point, etc) to select your point/area of interest, and the relevant tiles will show in green, with a list on the left side. You're looking for files with `.hgt.zip` extension, with a name starting with the coordinates (e.g. `N12E034`), which will show up in boxes on the left panel with a button to download them.
+In the search tool, use the icons on the right (square, polygon, point, etc) to select your point/area of interest, and the relevant tiles will show in green, with a list on the left side. You're looking for files with `.hgt.zip` extension, with a name starting with the coordinates (e.g. `N12E034`), which will show up in boxes on the left panel with a button to download them.
 
 Place the downloaded `.hgt.zip` files inside a folder named `maps` inside Tenth Gaia's directory, and start the tool (if it's already running, restart). The tiles will show up to be selected.
 
